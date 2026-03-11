@@ -1,0 +1,1451 @@
+/* Reset básico e Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Sora:wght@400;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Fonte para o corpo do texto */
+    font-family: 'Outfit', sans-serif;
+}
+
+:root {
+    --primary: #0F172A;
+    --accent: #0EA5E9;
+    --text-light: #F8FAFC;
+    --text-muted: #94A3B8;
+    --white: #ffffff;
+}
+
+body {
+    background-color: #0b1120; /* Fundo escuro profundo */
+    color: var(--white);
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Mata a rolagem lateral */
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Garante que imagens e vídeos nunca estourem o container */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Garante que nenhum container empurre a tela */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Margem interna para o texto não colar no vidro */
+    box-sizing: border-box; /* Fundamental para o ADS: inclui o padding na conta da largura */
+}
+/* Header & Nav */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent; /* Começa totalmente invisível */
+    transition: all 0.4s ease-in-out;
+    
+    /* ISSO IMPEDE DE ACHATAR: */
+    height: 90px; 
+    display: flex;
+    align-items: center;
+}
+
+header.scrolled {
+    /* Quando rolar, ele diminui só um pouco, sem esmagar */
+    height: 70px; 
+    background: rgba(11, 17, 32, 0.7) !important; 
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Garante que o conteúdo dentro do header ocupe a altura certa */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Garante que os itens fiquem alinhados no centro da nova altura */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Se quiser controlar a altura exata, pode usar min-height */
+    min-height: 16px; 
+}
+
+.logo {
+    color: var(--white); /* Agora o "KAREN" fica visível em branco */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: 'Sora', sans-serif;
+}
+
+.logo span {
+    background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    /* Um brilho leve para destacar o .DEV */
+    filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.3));
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+.nav-links .btn-nav {
+    background: var(--accent);
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+}
+
+/* --- ESTILO DA HOME (HERO) --- */
+
+.home-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+/* 1. O SELINHO (STATUS) - Dá o ar Premium */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: pulseStatus 2s infinite;
+}
+
+/* 2. O TÍTULO - Com o Neon contido */
+.hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hero-title span {
+    background: linear-gradient(90deg, #0EA5E9, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.3));
+}
+
+/* CONTAINER PARA CENTRALIZAR O TEXTO */
+.typewriter-container {
+    text-align: center;
+    width: 100%;
+    min-height: 3.5rem; /* Evita que o site "pule" quando o texto aparece */
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* O SUBTÍTULO EM SI */
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    /* Aumentamos de 600px para 800px para a frase caber melhor */
+    max-width: 800px; 
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    text-align: center;
+    display: inline-block;
+    /* Adicione isto para evitar quebras de palavras feias */
+    word-break: keep-all; 
+}
+
+/* O CURSOR PISCANDO AZUL NEON */
+.hero-subtitle::after {
+    content: '|';
+    margin-left: 5px;
+    color: #0EA5E9;
+    font-weight: bold;
+    display: inline-block;
+    animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* MOBILE: Ajuste de tamanho */
+@media (max-width: 768px) {
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+}
+
+/* Grupo de botões centralizado */
+.cta-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+/* Botão Principal (Preenchido) */
+/* --- BOTÃO PRINCIPAL APRIMORADO (Estilo Premium) --- */
+.btn-primary {
+    /* Base do degradê constante (Azul do tema para um azul mais escuro) */
+    background: linear-gradient(135deg, #0EA5E9 0%, #1D4ED8 100%);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    
+    /* Transição suave para o lift e o brilho */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Removemos a borda para o degradê fluir */
+    border: none; 
+    
+    position: relative; /* Garante que o brilho interno fique dentro */
+    overflow: hidden;    /* Corta o brilho que sair das bordas */
+    display: inline-block; /* Garante alinhamento correto */
+}
+
+/* O "Segredo": Um pseudo-elemento de brilho interno */
+/* Brilho que atravessa o botão (Efeito Scanner) */
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Começa bem fora da esquerda */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: skewX(-25deg); /* Inclina o brilho */
+    transition: none; 
+    
+    /* Animação infinita para o mobile não ficar parado */
+    animation: shiny 4s infinite ease-in-out;
+}
+
+@keyframes shiny {
+    0% { left: -150%; }
+    20% { left: 150%; } /* Passa rápido */
+    100% { left: 150%; } /* Espera um pouco para repetir */
+}
+
+/* --- ESTADO DE HOVER (Quando passa o mouse) --- */
+.btn-primary:hover {
+    /* 1. O "Lift" (subida) */
+    transform: translateY(-4px); 
+    
+    /* 2. O Glow Neon (sombra colorida) - Mais intenso agora */
+    box-shadow: 0 12px 25px rgba(14, 165, 233, 0.5); 
+    
+    /* 3. A "Onda" de luz interna sobe */
+    background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); /* Clareia o degradê */
+}
+
+/* A "onda" de luz sobe para dar brilho */
+.btn-primary:hover::after {
+    bottom: 0;
+}
+.btn-primary:active {
+    transform: scale(0.96); /* O botão "encolhe" levemente ao tocar */
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3); /* A sombra diminui */
+    filter: brightness(1.2); /* Ele dá um "flash" de luz */
+    transition: transform 0.1s; /* Resposta instantânea */
+}
+/* Botão Secundário (Apenas borda/discreto) */
+/* --- BOTÃO SECUNDÁRIO (Estilo Glassmorphism Moderno) --- */
+.btn-secondary {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 15px 25px;
+    border-radius: 8px;
+    
+    /* Uma borda sutil em vez de transparente */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    
+    /* Efeito de vidro suave no fundo */
+    background: rgba(255, 255, 255, 0.02);
+    
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* O "brilho" que vai preencher o botão no hover */
+.btn-secondary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Começa fora do botão à esquerda */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(14, 165, 233, 0.1), 
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+/* --- ESTADO DE HOVER --- */
+.btn-secondary:hover {
+    color: var(--accent); /* O texto muda para a sua cor principal */
+    border-color: var(--accent); /* A borda ganha cor */
+    background: rgba(14, 165, 233, 0.05); /* Um leve fundo azulado */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* O brilho passa rápido pelo botão no hover (efeito reflexo) */
+.btn-secondary:hover::before {
+    left: 100%;
+}
+
+/* Essa é a "Solda" de cor que você sugeriu */
+.about-section {
+    /* Aumentamos o padding superior para "tirar" as tags debaixo do gradiente escuro */
+    padding: 220px 0 100px; /* aumenta o topo */
+    background-color: #0b1120;
+    /* Mantemos o margin-top negativo para a solda, mas o padding interno protege o texto */
+    margin-top: 0; 
+    position: relative;
+    z-index: 1;
+}
+/* 1. RESET TOTAL: Ignora qualquer regra do seu site que esteja apertando o texto */
+/* 1. O PAI: Ajustado para não travar o movimento */
+.marquee-wrapper {
+    position: absolute !important;
+    top: 15% !important;
+    left: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    overflow: hidden !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    opacity: 0.08 !important;
+    /* Retiramos o all: unset daqui */
+}
+
+/* 2. O TEXTO: Agora com a animação "liberada" */
+.marquee-text {
+    display: inline-block !important;
+    flex-shrink: 0 !important;
+    min-width: 100% !important;
+    white-space: nowrap !important;
+    font-family: 'Sora', sans-serif !important;
+    font-size: 10rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    color: transparent !important;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4) !important;
+    padding-right: 80px !important;
+    
+    /* A ANIMAÇÃO PRECISA DE PRIORIDADE TOTAL */
+    animation: scrollInfinite 50s linear infinite !important;
+}
+
+/* 3. A ANIMAÇÃO: (Mantenha igual, mas confira se está fora de qualquer { }) */
+@keyframes scrollInfinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+/* Remova o .about-section::after para não dar conflito */
+.about-section::after { display: none; }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-content p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* Container dos cards */
+/* Procure as classes .stat-card, .service-card e .card-projeto e adicione isso: */
+/* Seleciona todos os tipos de cards do seu site */
+.stat-card, .card-projeto, .service-item {
+    position: relative;
+    overflow: hidden; /* Corta o brilho nas bordas arredondadas */
+}
+
+/* Cria a camada de luz para todos eles */
+.stat-card::before, 
+.card-projeto::before, 
+.service-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1; 
+    /* O gradiente usa as variáveis que o JS vai injetar */
+    background: radial-gradient(
+        390px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(14, 165, 233, 0.15), 
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* Ativa o brilho no hover */
+.stat-card:hover::before, 
+.card-projeto:hover::before, 
+.service-item:hover::before {
+    opacity: 1;
+}
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* Nova seção de Habilidades */
+.skills-section {
+    padding: 120px 0;
+    background-color: #0b1120; /* mesmo fundo para manter padrão */
+    position: relative;
+    z-index: 1;
+}
+
+.skills-section .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* --- 1. BASE DOS CARDS (Estilo Visual) --- */
+.stat-card, .service-card {
+    /* --- CONFIGURAÇÃO DE ALINHAMENTO --- */
+    width: 100%;             /* Ocupa o espaço disponível do grid */
+    max-width: 380px;        /* Não deixa o card ficar gigante em telas médias */
+    margin: 0 auto;          /* O SEGREDO: Centraliza o card no "quadrado" dele */
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* Centraliza ícones e textos internamente */
+    justify-content: center;
+
+    /* --- ESTILO VISUAL (MANTIDO) --- */
+    padding: 40px 25px;      /* Aumentei um pouco para dar mais "ar" */
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Efeito Vidro Aprimorado */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+    
+    /* Borda "Glow" sutil */
+    border: 1px solid rgba(14, 165, 233, 0.1); 
+    
+    /* Sombra que dá profundidade 3D */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); 
+}
+
+/* Interação de Destaque */
+.stat-card:hover, .service-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(14, 165, 233, 0.5); /* O azul ganha força no foco */
+    background: rgba(14, 165, 233, 0.03); /* Leve névoa azul interna */
+    box-shadow: 0 15px 50px rgba(14, 165, 233, 0.2); /* Glow externo suave */
+}
+/* Tipografia interna dos cards */
+.stat-card h3 {
+    color: var(--accent);
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-card p {
+    color: var(--white);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* --- 2. ANIMAÇÃO DE PULSAÇÃO (O "LED" que funciona no celular) --- */
+@keyframes led-pulse {
+    0% { border-color: rgba(14, 165, 233, 0.2); box-shadow: 0 0 10px rgba(14, 165, 233, 0.05); }
+    50% { border-color: rgba(14, 165, 233, 0.5); box-shadow: 0 0 20px rgba(14, 165, 233, 0.15); }
+    100% { border-color: rgba(14, 165, 233, 0.2); box-shadow: 0 0 10px rgba(14, 165, 233, 0.05); }
+}
+
+.stat-card, .service-card {
+    animation: led-pulse 4s infinite ease-in-out;
+}
+
+/* --- 3. ESTADO DE HOVER (Quando passa o mouse no PC) --- */
+.stat-card:hover, .service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(14, 165, 233, 0.07);
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
+    animation: none; /* Pausa a pulsação para o brilho ficar sólido no foco */
+}
+
+/* --- 5. TAGS DE HABILIDADES --- */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+    justify-content: flex-start;
+}
+
+.skills-tags span {
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.skills-tags span:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+}
+/* Grid de Projetos - Bloco Neutro e Seguro */
+#projetos {
+    /* O azul sólido agora vai até 90% da seção, deixando o degradê só pros 10% finais */
+    background: linear-gradient(to bottom, 
+        #0b1120 0%, 
+        #1E293B 10%, 
+        #1E293B 90%, 
+        #0b1120 100%
+    );
+    position: relative;
+    z-index: 2;
+    padding: 100px 0 170px; /* Aumentamos o respiro no final para garantir */
+    margin-top: -20px;
+    width: 100%;
+}
+
+/* Névoa de Saída: Volta para o preto para os serviços */
+#projetos::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, #0b1120);
+    pointer-events: none;
+    z-index: 10;
+}
+.grid-projetos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 40px 0;
+}
+.section-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem; /* Ajuste o tamanho conforme preferir */
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 60px;
+    
+    /* O Degradê Sofisticado */
+    background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 50%, #1D4ED8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Efeito de profundidade e brilho */
+    filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.2));
+    letter-spacing: -1px;
+    
+    /* Garante que o degradê não quebre em telas menores */
+    display: block;
+    width: 100%;
+}
+.hero h1 {
+    text-align: center; /* Garante que as duas linhas fiquem centralizadas */
+    line-height: 1.2;   /* Dá um espaço confortável entre as duas linhas */
+    font-size: 3.5rem;  /* Ou o tamanho que você já estava usando */
+    display: block;
+    width: 100%;
+}
+.text-gradient {
+    display: inline-block; /* Permite que o degradê e o brilho funcionem bem na linha de baixo */
+    background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 50%, #1D4ED8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.3));
+}
+
+/* Card com fundo azulado profundo e bordas suaves */
+.card-projeto {
+    background: #111a2e; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-decoration: none !important;
+}
+.card-projeto::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: borderFollow 4s linear infinite;
+}
+
+@keyframes borderFollow {
+    0% { left: -100%; top: 0; }
+    50% { left: 100%; top: 0; }
+    100% { left: 100%; top: 0; }
+}
+
+.card-projeto:hover {
+    transform: translateY(-12px);
+    border-color: var(--accent);
+    /* Efeito Neon sutil que você gosta */
+    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+}
+
+/* Proporção da imagem do projeto */
+.projeto-img {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.card-projeto:hover .projeto-img {
+    transform: scale(1.05);
+}
+
+.projeto-info {
+    padding: 25px;
+}
+
+.projeto-info h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-family: 'Sora', sans-serif;
+}
+
+.projeto-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Tags de tecnologia (HTML, CSS, JS) */
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.about-section, #projetos, .services {
+    width: 100%; /* Força a seção a espalhar por toda a tela */
+    left: 0;
+}
+/* Seção de Serviços - Ajustada para a transição fluida */
+.services {
+    width: 100%;
+    /* Aumentamos o padding para o título respirar longe da emenda */
+    padding: 160px 0 120px; 
+    background-color: #0b1120; 
+    position: relative;
+    z-index: 1;
+    
+    /* Diminuímos a margem negativa. 
+       Quanto MENOS negativo (ex: -40px), mais para BAIXO a seção vai. */
+    margin-top: -120px; 
+}
+
+.grid-services {
+    display: grid;
+    /* Isso garante que as colunas se ajustem sozinhas e fiquem centralizadas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o container na tela */
+    justify-content: center; /* Centraliza os itens dentro do grid */
+}
+
+.service-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Efeito Hover: Realce sutil */
+.service-item:hover {
+    border-color: rgba(14, 165, 233, 0.3);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Efeito NEON ao clicar (Active) */
+.service-item:active {
+    transform: scale(0.98);
+    background: rgba(14, 165, 233, 0.1);
+    border-color: var(--accent);
+    /* O brilho neon que você pediu */
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.4), 
+                inset 0 0 15px rgba(14, 165, 233, 0.2);
+}
+
+/* Estilo dos Ícones (Azuis como antes) */
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--accent); /* Azul ciano do seu root */
+    margin-bottom: 20px;
+    display: inline-block;
+    filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.3));
+}
+
+.service-item h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+.service-item p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+/* Efeito de Névoa para suavizar o final das seções */
+section {
+    position: relative;
+    /* Máscara suave no fundo para transição */
+    mask-image: linear-gradient(to bottom, 
+        black 85%, 
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(to bottom, 
+        black 85%, 
+        transparent 100%
+    );
+    margin-bottom: -50px; /* Sobrepõe levemente para a névoa funcionar */
+}
+/* Botão Flutuante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    /* Animação de pulso neon */
+    animation: pulse-wa 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+}
+
+/* Tooltip (Balãozinho de fala) */
+.tooltip-wa {
+    position: absolute;
+    right: 70px;
+    background: #0f172a;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border: 1px solid var(--accent);
+}
+
+.whatsapp-float:hover .tooltip-wa {
+    opacity: 1;
+    visibility: visible;
+    right: 80px;
+}
+
+/* Animação de Pulso */
+@keyframes pulse-wa {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.cta-section {
+    position: relative;
+    padding: 120px 0;
+    background-color: #0b1120;
+    overflow: hidden; /* Mantém a névoa dentro da seção */
+}
+
+/* A NEVOA (Ajuste aqui a intensidade) */
+.cta-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; /* Tamanho da névoa */
+    height: 600px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 70%);
+    z-index: 0; /* Fica atrás de tudo */
+    pointer-events: none; /* Não atrapalha o clique no botão */
+}
+
+.cta-card {
+    /* Em vez de fundo escuro, usamos um degradê profundo e elegante */
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 1) 100%);
+    
+    /* Borda neon completa para "emoldurar" o convite */
+    border: 2px solid var(--accent);
+    
+    padding: 60px 40px;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    
+    /* Sombra externa para dar volume */
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.2);
+}
+
+
+/* O "glow" azul no fundo do card */
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow: 0 0 15px var(--accent); /* Brilho da linha */
+}
+
+/* O título dentro desse card precisa de força */
+.cta-card h2 {
+    color: #fff;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.cta-card p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* Botão de Orçamento Pulsante */
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+}
+
+.btn-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(14, 165, 233, 0.6);
+    background-color: #38bdf8;
+}
+.footer-modern {
+    position: relative;
+    padding: 100px 0 40px;
+    background-color: #0b1120;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo dos Títulos e Textos */
+.footer-brand .logo { font-size: 1.8rem; font-weight: 900; margin-bottom: 20px; color: #fff; }
+.footer-brand .logo span { color: #0EA5E9; }
+.footer-brand p { color: #94a3b8; line-height: 1.6; max-width: 300px; }
+
+.footer-nav h4, .footer-contact h4 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Links de Navegação */
+.footer-nav ul { list-style: none; padding: 0; }
+.footer-nav ul li { margin-bottom: 12px; }
+.footer-nav ul li a { 
+    color: #94a3b8; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+.footer-nav ul li a:hover { color: #0EA5E9; }
+
+/* Redes Sociais com o efeito que "Acende" */
+.social-links { display: flex; gap: 15px; }
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(5px);
+}
+
+.social-icon:hover {
+    background: rgba(14, 165, 233, 0.1);
+    border-color: #0EA5E9;
+    color: #0EA5E9;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+
+
+/* Classe inicial: invisível e deslocado para baixo */
+.reveal {
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1) !important;
+    visibility: hidden;
+}
+
+.reveal.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+}
+.card-projeto:active, .stat-card:active, .btn-primary:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s ease;
+    filter: brightness(1.2);
+}
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0b1120; /* A mesma cor do seu fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Fica acima de TUDO */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* O Nome Karen com efeito Neon */
+.loader-name {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+    font-family: 'Sora', sans-serif;
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
+    animation: pulseName 2s ease-in-out infinite;
+}
+
+/* Barrinha de progresso minimalista */
+.loader-bar {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #0EA5E9, #1D4ED8);
+    box-shadow: 0 0 10px #0EA5E9;
+    animation: loadProgress 1.5s ease-in-out forwards;
+}
+
+/* Quando o preloader sai (efeito cortina subindo) */
+#preloader.loaded {
+    transform: translateY(-100%);
+}
+
+@keyframes pulseName {
+    0%, 100% { opacity: 0.5; filter: blur(2px); }
+    50% { opacity: 1; filter: blur(0); }
+}
+
+@keyframes loadProgress {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    .loader-name { font-size: 2.5rem; letter-spacing: 5px; }
+}
+/* Media Query para Celulares e Tablets pequenos */
+@media (max-width: 768px) {
+    
+    .hero-title { font-size: 2.8rem; }
+    
+    .hero-subtitle {
+        white-space: normal; /* No celular, o texto precisa dobrar */
+        width: auto;
+        border: none;
+        animation: none; /* Desliga o typewriter no mobile para não bugar o layout */
+    }
+
+    .cta-group {
+        flex-direction: column; /* Botões um em cima do outro */
+        gap: 10px;
+    }
+
+    /* 2. SOBRE - Grid vira Coluna única */
+   
+    .about-section {
+        padding: 80px 0 100px;
+        margin-top: -80px; /* Ajuste na névoa para telas menores */
+    }
+    .about-section .section-title {
+        text-align: center !important;
+        margin: 0 auto 30px auto;
+        width: 100%;
+    }
+    /* Centraliza os parágrafos e o texto do "Olá! Eu sou a Karen..." */
+    .about-content {
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    /* Garante que o texto dentro dos parágrafos não fique justificado (o que fica feio no mobile) */
+    .about-content p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 3. PROJETOS - Grid vira Coluna única */
+    .grid-projetos {
+        grid-template-columns: 1fr; /* Cards ocupam a largura toda */
+        padding: 20px 10px;
+    }
+
+    #projetos {
+        padding: 60px 0 100px;
+    }
+
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* 4. SERVIÇOS - Ajuste de itens */
+   
+
+    .service-card {
+        max-width: 90%; /* Dá um respiro nas laterais no celular */
+    }
+    /* FORÇAR OS 3 PONTOS A APARECEREM */
+   .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 10000; /* Valor altíssimo para ficar acima do menu azul */
+        position: fixed; /* Fixa ele na tela */
+        right: 20px;     /* Alinha no canto direito */
+        top: 25px;       /* Alinha no topo */
+    }
+
+    
+    .stat-card p {
+        font-size: 0.9rem; /* Leve redução para telas muito pequenas */
+    }
+
+    .bar {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background-color: var(--accent); /* Cor azul neon que você gosta */
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+   .nav-links {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 100%; 
+        width: 100%;
+        height: 100vh;
+        background: rgba(11, 17, 32, 0.98); /* Fundo um pouco mais opaco para leitura */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0); 
+        z-index: 9999; /* Um número abaixo do menu-toggle */
+    }
+    /* Quando clica, ele desliza para dentro */
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links a {
+        font-size: 2rem;
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        color: var(--white);
+        text-decoration: none;
+        transition: 0.3s;
+        opacity: 0; /* Começa invisível para animar */
+        transform: translateY(20px);
+    }
+
+    /* Animação dos links aparecendo um por um */
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0.4s ease;
+    }
+    
+    /* Delay para cada link (Efeito cascata) */
+    .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
+    .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
+    .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
+    .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
+
+    .nav-links a:hover {
+        color: var(--accent);
+        text-shadow: 0 0 15px var(--accent); /* Efeito Neon */
+    }
+
+    /* Transformar os 3 pontos em X com animação */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+    .tooltip-wa { display: none; } /* Esconde o texto no mobile para não poluir */
+  /* Centraliza e ajusta o tamanho do título principal */
+
+
+    /* Garante que a parte com degradê acompanhe o estilo */
+    .text-gradient {
+        font-size: 2rem; /* Mesmo tamanho do h1 */
+        display: inline-block; /* Permite o alinhamento correto na nova linha */
+        text-align: center;
+    }
+
+    /* Centraliza o parágrafo debaixo do título */
+
+    /* Centraliza os botões (Quero um site / Ver trabalhos) */
+    .cta-group {
+        display: flex;
+        flex-direction: column; /* Botões um em cima do outro no mobile */
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+   .cta-card {
+        width: calc(100% - 40px); /* Garante que o card caiba na tela com margem */
+        margin: 0 auto;
+    }
+
+    .cta-card h2 {
+        font-size: 1.8rem; /* Texto principal menor no mobile */
+        text-align: center;
+    }
+
+    .cta-card p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    /* Ajusta a linha de névoa do topo para o mobile */
+    .cta-card::before {
+        width: 80%;
+    }
+
+    /* Botão ocupando a largura toda para facilitar o clique com o polegar */
+    .btn-cta {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 20px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .footer-brand p { margin: 0 auto; }
+    .social-links { justify-content: center; }
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .about-content h2 {
+        text-align: center !important; /* Sobrescreve o estilo inline */
+    }
+
+    .skills-tags {
+        justify-content: center; /* Centraliza as tags no mobile */
+    }
+
+    .about-section {
+        padding: 80px 0 60px; /* Reduz o respiro para telas pequenas */
+    }
+    /* Ajuste de itens de serviço */
+   .grid-projetos, .grid-services {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px 15px; /* Mais respiro nas laterais */
+    }
+    .card-projeto, .stat-card {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px); /* O efeito de vidro que faz toda a diferença */
+    }
+
+    .service-item { /* Corrigido de .service-card para .service-item */
+        width: 100%;
+        max-width: 380px; 
+    }
+   .stat-card, .card-projeto, .service-item {
+        background: rgba(255, 255, 255, 0.04) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(14, 165, 233, 0.2) !important; /* Borda azulada sutil */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 2. Brilho Pulsante no topo do card (substitui o mouse) */
+    .stat-card::before, 
+    .card-projeto::before, 
+    .service-item::before {
+        opacity: 1 !important;
+        background: radial-gradient(
+            150px circle at 50% 0%, 
+            rgba(14, 165, 233, 0.25), 
+            transparent 70%
+        ) !important;
+        animation: glowPulse 3s infinite ease-in-out !important;
+    }
+
+    @keyframes glowPulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* 3. Feedback de Clique (Crucial!) */
+    .stat-card:active, .card-projeto:active, .btn-primary:active {
+        transform: scale(0.95) !important; /* O card 'funde' ao tocar */
+        filter: brightness(1.3);
+    }
+    
+    /* Removemos o deslocamento (translateY) no mobile para evitar saltos na tela */
+    .btn-primary:active, .btn-secondary:active {
+        transform: scale(0.98); /* Efeito de "apertar" o botão */
+        background: var(--accent);
+    }
+   .marquee-text {
+        font-size: 5rem !important;
+        /* No mobile, algo entre 20s e 30s fica perfeito */
+        animation-duration: 25s !important; 
+    }
+    /* 1. Ajuste do Texto (Máquina de Escrever) */
+    .hero-subtitle {
+        font-size: 1rem !important; /* Texto um pouco menor para caber */
+        max-width: 90% !important;   /* Ocupa 90% da largura da tela */
+        margin: 0 auto 30px !important;
+        line-height: 1.5;
+        display: block !important;    /* Garante a quebra de linha correta */
+        white-space: normal !important; /* Permite que o texto dobre no celular */
+    }
+
+    /* 2. Ajuste dos Botões (Para não ficarem "gordos") */
+    .hero-btns {
+        display: flex;
+        flex-direction: column; /* Um embaixo do outro */
+        gap: 12px;             /* Espaço entre eles */
+        width: 100%;
+        padding: 0 25px;       /* Afasta das bordas do celular */
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100% !important;
+        padding: 12px 20px !important; /* Altura elegante, não bruta */
+        font-size: 0.95rem !important;
+        border-radius: 10px !important; /* Bordas mais finas */
+        text-align: center;
+    }
+
+    /* 3. Ajuste do Título */
+    .hero-title {
+        font-size: 2.5rem !important; /* Diminui o título para não quebrar feio */
+        padding: 0 10px;
+    }
+
+    /* Ajuste dos botões em si */
+    .btn-primary, .btn-secondary {
+        width: 100%; /* Largura total da área segura */
+        padding: 14px 20px !important; /* Diminuí a altura de cima e baixo */
+        font-size: 0.95rem !important; /* Texto um pouquinho menor */
+        border-radius: 12px !important; /* Bordas mais modernas e menos arredondadas */
+    }
+}
+
+/* Ajuste extra para a Hero no Mobile */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.2rem; /* Diminui o título para não quebrar feio */
+    }
+    
+    .hero-btns {
+        flex-direction: column; /* Botões um em cima do outro */
+        width: 100%;
+    }
+
+    .btn-main, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Esconde o botão no Desktop */
+@media (min-width: 769px) {
+    .menu-toggle { display: none; }
+}
