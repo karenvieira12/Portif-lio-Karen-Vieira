@@ -1,0 +1,19 @@
+🎨 Karen | Portfolio
+Frontend Developer & UI Designer
+Especialista em interfaces fluidas, transições com gradientes e arquitetura CSS escalável.
+
+🚀 Sobre o Projeto
+Este repositório contém o código-fonte do meu portfólio pessoal. O objetivo principal foi criar uma experiência de navegação imersiva, utilizando técnicas avançadas de CSS para transições suaves entre seções.
+
+Foco Visual: Uso de mask-image e linear-gradients para eliminar cortes bruscos entre blocos de conteúdo.
+
+Filosofia de Código: Aplicação rigorosa do princípio DRY (Don't Repeat Yourself), utilizando variáveis CSS e mixins para manter o projeto leve e fácil de manter.
+
+🛠️ Tecnologias & Ferramentas
+Core: HTML5, CSS3 Moderno, JavaScript (ES6+).
+
+Estilização: CSS Puro e JS.
+
+Performance: Imagens otimizadas e carregamento progressivo.
+
+Deploy: Netlify.
